@@ -7,6 +7,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
     __DEV__: true,
+
   },
   parser: 'babel-eslint',
   parserOptions: {
@@ -41,6 +42,9 @@ module.exports = {
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
     'react/jsx-props-no-spreading': 'off',
+    "camelcase": "off",
+    "react/prop-types": 0,
+
   },
   settings: {
     'import/resolver': {

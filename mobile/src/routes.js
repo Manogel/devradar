@@ -18,7 +18,7 @@ const Routes = (userLogged = false) =>
         Profile: {
           screen: Profile,
           navigationOptions: {
-            title: 'Perfilno GitHub',
+            title: 'Perfil no GitHub',
           },
         },
       },
