@@ -19,8 +19,12 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor="#111" barStyle="light-content" />
+      <StatusBar backgroundColor="#7D40E7" barStyle="light-content" />
       <Routes />
     </Provider>
   );
 }
+
+// error react-native-maps
+// added dependence in /node_modules/react-native-maps/lib/android/build.gradlew
+// def supportLibVersion = safeExtGet('supportLibVersion', '28.0.0')
