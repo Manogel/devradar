@@ -18,7 +18,7 @@ export default function ListDevs() {
     <Container>
       <List>
         {users?.map(user => (
-          <Item>
+          <Item key={user._id}>
             <header>
               <img src={user.avatar_url} />
               <UserInfo>
