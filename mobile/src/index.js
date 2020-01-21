@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './config/ReactotronConfig';
-import { StatusBar, Platform } from 'react-native';
+import { StatusBar, YellowBox } from 'react-native';
 import { Provider } from 'react-redux';
 
 import createNavigator from '~/routes';
 
 import store from './store';
+
+YellowBox.ignoreWarnings(['Unrecognized WebSocket connection option(s)']);
 
 export default function App() {
   const [userLogged, setUserLogged] = useState(false);

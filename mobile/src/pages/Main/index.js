@@ -5,13 +5,14 @@ import Geolocation from '@react-native-community/geolocation';
 
 import Map from '~/components/Map';
 import api from '~/services/api';
+import { connect, disconnect, subscribeToNewUsers } from '~/services/socket';
 
 import { SearchForm, Input, Button } from './styles';
 
 export default function Main() {
   const [techs, setTechs] = useState('');
   const [location, setLocation] = useState(null);
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function getInitialPosition() {
@@ -27,6 +28,16 @@ export default function Main() {
     getInitialPosition();
   }, []);
 
+  useEffect(() => {
+    subscribeToNewUsers(user => setUsers([...users, user]));
+  }, [users]);
+
+  function setupWebSocket() {
+    disconnect();
+    const { latitude, longitude } = location;
+    connect(latitude, longitude, techs);
+  }
+
   async function loadUsers() {
     const { latitude, longitude } = location;
 
@@ -38,6 +49,7 @@ export default function Main() {
       },
     });
     setUsers(response.data);
+    setupWebSocket();
   }
 
   return (
